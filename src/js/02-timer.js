@@ -10,6 +10,7 @@ const dataSeconds = document.querySelector('[data-seconds]');
 
 let selectedDate = '';
 let timeHasLeft;
+let ms = 0;
 
 const options = {
     enableTime: true,
