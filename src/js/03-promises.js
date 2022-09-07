@@ -17,11 +17,11 @@ function createPromise(position, delay) {
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  const amount = form.elements.amount.value;
-  const step = form.elements.step.value;
-  let delay = form.elements.delay.value;
+  const amount = +form.elements.amount.value;
+  const step = +form.elements.step.value;
+  let delay = +form.elements.delay.value;
   for (let i = 1; i <= amount; i++) {
     createPromise(i, delay);
-    delay = +delay + +step;
+    delay +=step;
   };
 });
