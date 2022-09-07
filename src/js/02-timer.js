@@ -48,20 +48,21 @@ function convertMs(ms) {
     return { days, hours, minutes, seconds };
 }
 
-const addLeadingZero = (value) => value.length < 2 ? value.padStart(2, "0") : value; 
+const addLeadingZero = (value) => value.toString().padStart(2, "0");
+const changeTime = () => {
+    dataDays.innerHTML = addLeadingZero(timeHasLeft.days);
+    dataHours.innerHTML = addLeadingZero(timeHasLeft.hours);
+    dataMinutes.innerHTML = addLeadingZero(timeHasLeft.minutes);
+    dataSeconds.innerHTML = addLeadingZero(timeHasLeft.seconds);
+};
 
 btnStart.disabled = true;
 btnStart.addEventListener('click', () => {
     setInterval(() => {
         ms = selectedDate - new Date();
         timeHasLeft = convertMs(ms);
-
-        dataDays.innerHTML = addLeadingZero(timeHasLeft.days + '');
-        dataHours.innerHTML = addLeadingZero(timeHasLeft.hours + '');
-        dataMinutes.innerHTML = addLeadingZero(timeHasLeft.minutes + '');
-        dataSeconds.innerHTML = addLeadingZero(timeHasLeft.seconds + '');
+        changeTime();
     }, 1000);
 })
-
 
 flatpickr(datetimePicker, options);
