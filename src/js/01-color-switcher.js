@@ -7,11 +7,14 @@ function getRandomHexColor() {
 }
 
 start.addEventListener('click', () => {
+    stop.disabled = false;
     start.disabled = true;
     interval = setInterval(() => document.body.style.background = getRandomHexColor(), 1000);
 })
 
+stop.disabled = true;
 stop.addEventListener('click', () => {
+    stop.disabled = true;
     start.disabled = false;
     clearInterval(interval);
 })
